@@ -438,6 +438,7 @@ nav {
 }
 
 .burger {
+  cursor: pointer;
   color: white;
   font-size: 2rem;
   margin-left: auto;
@@ -463,7 +464,7 @@ nav {
 .modalBox {
   position: relative;
   cursor: initial;
-  background-color: #151a23;
+  background: #212121;
   height: 100%;
   width: 28rem;
   overflow: hidden;
@@ -478,27 +479,13 @@ nav {
   left: 1rem;
   z-index: 1;
   font-size: 2rem;
-  color: #00aeff;
+  color: white;
 }
 
 .centerLoadingForModal {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.modalTest {
-  width: 10rem;
-  height: 10rem;
-  background-color: blue;
-}
-
-.presentationOverlay {
-  position: fixed;
-  z-index: 1;
-  background: #212121;
-  width: 100%;
-  height: 100%;
 }
 
 .carouselAndSvgWrap {
