@@ -361,191 +361,56 @@ html {
 
 body {
   /*Make default font-size bigger. If default font-size is 16px; 1.6 rem = 16 px*/
-  font: 1.1rem "Futura Medium", helvetica, arial, sans-serif;
+  font: 1.1rem "Spiegel", helvetica, arial, sans-serif;
 }
 
+@font-face {
+  font-family: "Spiegel";
+  src: url(../fonts/Spiegel-Regular.woff) format("woff");
+}
 nav {
   position: relative;
   z-index: 200;
+  display: flex;
   position: fixed;
   width: 100vw;
   top: 0;
   left: 0;
   background: transparent;
-  padding: 1rem 4rem;
+  padding: 1.5rem 4rem;
+  background: black;
 }
 @media screen and (min-width: 520px) {
   nav {
-    padding: 1rem 4.5rem;
+    padding: 1.5rem 4.5rem;
   }
 }
 
-.nameAndHeaderIconsWrap {
+.headerTextsWrap {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-}
-
-.backButton {
-  cursor: pointer;
-  position: relative;
-  left: -3.5rem;
-  font-size: 3rem;
-  color: black;
-}
-@media screen and (min-width: 520px) {
-  .backButton {
-    font-size: 3rem;
-  }
-}
-@media screen and (min-width: 768px) {
-  .backButton {
-    font-size: 4rem;
-  }
-}
-
-.backButtonWhite {
-  transition: all 0.2s ease;
-  color: white;
-}
-
-.backButtonBlack {
-  transition: all 0.2s ease;
-  color: black;
-}
-
-.headerName {
-  font-size: 1.4rem;
-  font-weight: normal;
-  letter-spacing: 0.1rem;
-}
-@media screen and (min-width: 520px) {
-  .headerName {
-    font-size: 2.4rem;
-  }
-}
-
-.burger {
-  position: relative;
-  width: 2.5rem;
-  height: 22px;
-  cursor: pointer;
-}
-@media screen and (min-width: 520px) {
-  .burger {
-    width: 5rem;
-  }
-}
-.burger .firstLine {
-  width: 100%;
-  height: 0.2rem;
-  background: #fff;
-  position: absolute;
-}
-@media screen and (min-width: 520px) {
-  .burger .firstLine {
-    height: 0.3rem;
-  }
-}
-.burger .secondLine {
-  width: 100%;
-  height: 0.2rem;
-  background: #fff;
-  position: absolute;
-  right: 0;
-}
-@media screen and (min-width: 520px) {
-  .burger .secondLine {
-    height: 0.3rem;
-  }
-}
-
-.burgerDropdown {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  background-image: linear-gradient(to right, #072142, #8c2b7a 42%, #ff4d5a);
-}
-.burgerDropdown h1 {
-  position: relative;
-  overflow: hidden;
-  display: inline;
   text-transform: uppercase;
-  color: white;
-  font-size: 3rem;
-  letter-spacing: 0.5rem;
-  text-align: center;
-  text-shadow: 0 10px 30px rgba(2, 11, 22, 0.2);
+  margin-left: 10rem;
 }
-@media screen and (min-width: 768px) {
-  .burgerDropdown h1 {
-    letter-spacing: 1rem;
-    font-size: 5.5rem;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .burgerDropdown h1 {
-    letter-spacing: 2rem;
-    font-size: 6rem;
-  }
+.headerTextsWrap h1 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.1rem;
+  margin-right: 5rem;
 }
 
-.dropdownTitleWrap {
-  position: relative;
-  width: 100%;
-  text-align: center;
-}
-
-.crossTitle {
+.headerLogo {
+  width: 16rem;
+  height: 16rem;
+  background: url(https://lolstatic-a.akamaihd.net/riotbar/live/1.1.5/images/navigation/fistsprite.png) 0 -2400px no-repeat;
+  transition: background-position 0.25s steps(15, end);
+  transform: scale(0.33);
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: -4.8rem;
   left: 0;
-  width: 100%;
-  height: 1rem;
-  background: white;
 }
-
-.dropdownTitleWrap {
-  margin-bottom: 2rem;
-}
-.dropdownTitleWrap h1 {
-  cursor: pointer;
-}
-
-.headerLinkedInAndGithubIcon {
-  font-size: 1.4rem;
-  font-weight: normal;
-  margin-right: 2rem;
-  color: white;
-}
-@media screen and (min-width: 520px) {
-  .headerLinkedInAndGithubIcon {
-    font-size: 2.6rem;
-    margin-right: 4rem;
-  }
-}
-
-.headerName,
-.headerLinkedInAndGithubIcon {
-  cursor: pointer;
-  transition: all 0.2s ease-in;
-}
-.headerName:hover,
-.headerLinkedInAndGithubIcon:hover {
-  color: #828c96;
-  transition: all 0.2s ease-in;
-}
-
-.headerIconsWrap {
-  display: flex;
-  align-items: center;
+.headerLogo:hover {
+  background-position: 0 0;
 }
 
 .carouselAndSvgWrap {
