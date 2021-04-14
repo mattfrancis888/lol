@@ -1,12 +1,13 @@
 nav {
     position: relative;
-    z-index: 200;
+
     display: flex;
-    position: fixed;
+    justify-content: space-between;
+    align-items: center;
     width: 100vw;
     top: 0;
     left: 0;
-
+    height: 6.5rem;
     background: transparent;
     padding: 1.5rem 4rem;
     @media screen and (min-width: $sm_breakpoint) {
@@ -25,6 +26,7 @@ nav {
         font-weight: 800;
         letter-spacing: 0.1rem;
         margin-right: 5rem;
+        cursor: pointer;
     }
 }
 .headerLogo {
@@ -38,9 +40,39 @@ nav {
     // top: -55px;
     // left: -55px;
     top: -4.8rem;
-    left: 0;
+    left: -3rem;
 
     &:hover {
         background-position: 0 0;
+    }
+}
+
+.modalLogoWrap {
+    padding: 3rem 2rem;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalTextWrap {
+    h1 {
+        font-family: "FF Mark";
+        text-transform: uppercase;
+        border-bottom: 1px solid #111111;
+        font-size: 1.6rem;
+
+        cursor: pointer;
+        font-weight: bold;
+        padding: 2rem;
+    }
+}
+
+.burger {
+    color: white;
+    font-size: 2rem;
+    margin-left: auto;
+    @media screen and (min-width: $md_breakpoint) {
+        margin-left: 0;
     }
 }
