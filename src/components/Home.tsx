@@ -1,130 +1,78 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, useTransition, animated } from "react-spring";
-
+import HomeBanner from "./HomeBanner";
 const Home: React.FC<{}> = () => {
-    //Box border fill: https://codepen.io/devilishalchemist/pen/oXjYKB
-    useEffect(() => {}, []);
-    const top = useSpring({
+    const [progress, setProgress] = useState({
+        percentage: 25,
+        storiesArrayIndex: 0,
+    });
+
+    const fill = useSpring({
         from: {
-            width: "0%",
+            transform: "translate3d(0%,0%,0px)",
         },
         to: {
-            width: "100%",
+            transform: `translate3d(${progress.percentage}%,0%,0px)`,
+            //transform: `translate3d(25%,0%,0px)`,
         },
 
         config: {
             duration: 1000,
-            // mass: 1,
-            // tension: 250,
-            // friction: 30,
         },
     });
 
-    const right = useSpring({
-        from: {
-            height: "0%",
-        },
-        to: {
-            height: "100%",
-        },
-
-        delay: 1000,
-        config: {
-            duration: 1000,
-            // mass: 1,
-            // tension: 250,
-            // friction: 30,
-        },
-    });
-
-    const bottom = useSpring({
-        from: {
-            transform: "scaleX(0)",
-        },
-        to: {
-            transform: "scaleX(1)",
-        },
-        delay: 2000,
-        config: {
-            duration: 1000,
-            // mass: 1,
-            // tension: 250,
-            // friction: 30,
-        },
-    });
-
-    const left = useSpring({
-        from: {
-            transform: "scaleY(0)",
-        },
-        to: {
-            transform: "scaleY(1)",
-        },
-        delay: 3000,
-        config: {
-            duration: 1000,
-            // mass: 1,
-            // tension: 250,
-            // friction: 30,
-        },
-    });
     return (
         <div className="homeContainer">
-            <div className="homeBannerContainer">
-                <div className="vidHomeBanner">
-                    <video
-                        className="blurredVid"
-                        autoPlay={true}
-                        playsInline={false}
-                        muted={true}
-                        loop={true}
-                        // style={style}
-                    >
-                        <source
-                            src=" https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/en-us/production/en-us/static/hero-blurred-7572101a2ce5e003b66483b7fe5c5d36.webm"
-                            type="video/mp4"
-                        />
-                    </video>
-                    {/* <div className="box glowing videoBorder"></div> */}
-                    <div className="videoBorder">
-                        <animated.span
-                            className="top"
-                            style={top}
-                        ></animated.span>
-                        <animated.span
-                            className="right"
-                            style={right}
-                        ></animated.span>
-                        <animated.span
-                            className="bottom"
-                            style={bottom}
-                        ></animated.span>
-                        <animated.span
-                            className="left"
-                            style={left}
-                        ></animated.span>
-                    </div>
+            <HomeBanner />
+            <div className="chooseChampionContainer">
+                <div className="chooseChampionTextWrap">
+                    <h1>
+                        Choose Your
+                        <span className="championBold">Champion</span>
+                    </h1>
+                    <p>
+                        Whether you like to dive straight into the fray, support
+                        your teammates, or something in between, there’s a spot
+                        for you on the Rift.
+                    </p>
+                    <div className="championRoleAndSpotlightWrap">
+                        <div className="roleContainer">
+                            <div className="progressBar"></div>
+                            <animated.div
+                                className="dot"
+                                style={fill}
+                            ></animated.div>
+                            <div
+                                onClick={() => {
+                                    setProgress({
+                                        percentage: 25,
+                                        storiesArrayIndex: 0,
+                                    });
+                                }}
+                                className="progressControl"
+                            >
+                                <h1>Support</h1>
+                            </div>
+                            <div
+                                onClick={() => {
+                                    setProgress({
+                                        percentage: 50,
+                                        storiesArrayIndex: 0,
+                                    });
+                                }}
+                                className="progressControl"
+                            >
+                                <h1>Tank</h1>
+                            </div>
+                        </div>
 
-                    <div className="surfaceVidContainer">
-                        <video
-                            className="surfaceVid"
-                            autoPlay={true}
-                            playsInline={false}
-                            muted={true}
-                            loop={true}
-                            // style={style}
-                        >
-                            <source
-                                src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/en-us/production/en-us/static/hero-0632cbf2872c5cc0dffa93d2ae8a29e8.webm"
-                                type="video/mp4"
-                            />
-                        </video>
+                        <div className="championSpotlightContainer">
+                            <img
+                                src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/en-us/production/en-us/static/support-d63ae08baf517425864ddc020a5871d5.png"
+                                alt=""
+                            ></img>
+                        </div>
                     </div>
-                    <img
-                        className="homeBannerLogo"
-                        src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/en-us/production/en-us/static/logo-800-47024e2aeaaa8651c172ba883264dd43.png"
-                        alt="logo"
-                    />
                 </div>
             </div>
         </div>
