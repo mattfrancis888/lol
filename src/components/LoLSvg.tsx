@@ -10,7 +10,7 @@ const LolSvg: React.FC<{}> = () => {
             viewBox="0 0 85 32"
             fill="none"
         >
-            <g clip-path="url(#clip0)">
+            <g clipPath="url(#clip0)">
                 <path
                     d="M59.7261 17.2695V31.749H56.5229L49.6035 22.34V31.749H46.5347V18.6228L45.8335 17.2695H49.801L56.6573 26.8087V17.2695H59.7261Z"
                     fill="#C28F2C"

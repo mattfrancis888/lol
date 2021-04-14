@@ -20,12 +20,12 @@ interface IProps {
     // any other props that come into the component
 }
 const provider = ({ initialState = {}, children }: IProps) => {
-    // const store = createStore(
-    //     reducers,
-    //     { authStatus: { authenticated: Cookies.get("ACCESS_TOKEN") } },
-    //     //if our inital state (authStauts) has a token from local storage, keep them logged in
-    //     composeWithDevTools(applyMiddleware(reduxThunk))
-    // );
+    const store = createStore(
+        reducers,
+        // { authStatus: { authenticated: Cookies.get("ACCESS_TOKEN") } },
+        //if our inital state (authStauts) has a token from local storage, keep them logged in
+        composeWithDevTools(applyMiddleware(reduxThunk))
+    );
 
     return <Provider store={store}>{children}</Provider>;
 };
