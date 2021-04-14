@@ -2,17 +2,67 @@ import React, { useState, useEffect } from "react";
 import { useSpring, useTransition, animated } from "react-spring";
 
 const Home: React.FC<{}> = () => {
+    //Box border fill: https://codepen.io/devilishalchemist/pen/oXjYKB
     useEffect(() => {}, []);
-    const borderAnimation = useSpring({
+    const top = useSpring({
         from: {
-            border: "1px solid white",
+            width: "0%",
         },
         to: {
-            border: "1px solid blue",
+            width: "100%",
         },
 
         config: {
-            duration: 2000,
+            duration: 1000,
+            // mass: 1,
+            // tension: 250,
+            // friction: 30,
+        },
+    });
+
+    const right = useSpring({
+        from: {
+            height: "0%",
+        },
+        to: {
+            height: "100%",
+        },
+
+        delay: 1000,
+        config: {
+            duration: 1000,
+            // mass: 1,
+            // tension: 250,
+            // friction: 30,
+        },
+    });
+
+    const bottom = useSpring({
+        from: {
+            transform: "scaleX(0)",
+        },
+        to: {
+            transform: "scaleX(1)",
+        },
+        delay: 2000,
+        config: {
+            duration: 1000,
+            // mass: 1,
+            // tension: 250,
+            // friction: 30,
+        },
+    });
+
+    const left = useSpring({
+        from: {
+            transform: "scaleY(0)",
+        },
+        to: {
+            transform: "scaleY(1)",
+        },
+        delay: 3000,
+        config: {
+            duration: 1000,
             // mass: 1,
             // tension: 250,
             // friction: 30,
@@ -35,6 +85,26 @@ const Home: React.FC<{}> = () => {
                             type="video/mp4"
                         />
                     </video>
+                    {/* <div className="box glowing videoBorder"></div> */}
+                    <div className="videoBorder">
+                        <animated.span
+                            className="top"
+                            style={top}
+                        ></animated.span>
+                        <animated.span
+                            className="right"
+                            style={right}
+                        ></animated.span>
+                        <animated.span
+                            className="bottom"
+                            style={bottom}
+                        ></animated.span>
+                        <animated.span
+                            className="left"
+                            style={left}
+                        ></animated.span>
+                    </div>
+
                     <div className="surfaceVidContainer">
                         <video
                             className="surfaceVid"
@@ -57,9 +127,6 @@ const Home: React.FC<{}> = () => {
                     />
                 </div>
             </div>
-            {/* <animated.div className="style__Container-sc-1uho5c3-0 gvLtET hex test"></animated.div>
-             */}
-            <div className="box glowing"></div>
         </div>
     );
 };
