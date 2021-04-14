@@ -1,3 +1,4 @@
+$progressBarInitialWidth: 25%;
 .chooseChampionContainer {
     padding-top: 10rem;
     padding-bottom: 10rem;
@@ -36,9 +37,17 @@
     position: relative;
     display: flex;
     width: 50%;
+    .progressBarInitial {
+        position: absolute;
+        height: 1rem;
+        background-color: black;
+        width: $progressBarInitialWidth;
+        left: 0;
+    }
     .progressBar {
         position: absolute;
-        width: 100%;
+        width: 75%;
+        left: $progressBarInitialWidth;
         height: 1rem;
         background-color: grey;
     }
@@ -55,13 +64,15 @@
 
 .dot {
     position: absolute;
-    width: 100%;
+    width: 75%;
     height: 0.2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background: yellow;
+    left: $progressBarInitialWidth;
+    top: 0;
     cursor: pointer;
     &:before {
         content: "";
@@ -82,12 +93,12 @@
 
 .progressControl {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
+    left: $progressBarInitialWidth;
+    width: calc(75% / 4);
     cursor: pointer;
+    height: 10rem;
+    top: -10rem;
+
     &:before {
         content: "";
         background: red;
@@ -95,10 +106,35 @@
         width: 1.2rem;
         height: 1.2rem;
         position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        // left: 50%;
+        // top: 50%;
+        // transform: translate(-50%, -50%);
+        bottom: 0;
+        left: 0;
         border-radius: 50%;
         z-index: 1;
+    }
+
+    .championIconAndRoleWrap {
+        display: inline-block;
+        background: green;
+        position: relative;
+        // left: -25%;
+
+        // transform: translateX(-50%);
+
+        svg {
+            left: 50%;
+            transform: translateX(-50%);
+            position: relative;
+            width: 2rem;
+            height: 2rem;
+        }
+        h1 {
+            font-size: 0.8rem;
+            text-align: left;
+            width: 100%;
+            margin-bottom: 5rem;
+        }
     }
 }

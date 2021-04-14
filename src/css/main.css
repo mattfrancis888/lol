@@ -619,9 +619,17 @@ nav {
   display: flex;
   width: 50%;
 }
+.roleContainer .progressBarInitial {
+  position: absolute;
+  height: 1rem;
+  background-color: black;
+  width: 25%;
+  left: 0;
+}
 .roleContainer .progressBar {
   position: absolute;
-  width: 100%;
+  width: 75%;
+  left: 25%;
   height: 1rem;
   background-color: grey;
 }
@@ -637,13 +645,15 @@ nav {
 
 .dot {
   position: absolute;
-  width: 100%;
+  width: 75%;
   height: 0.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: yellow;
+  left: 25%;
+  top: 0;
   cursor: pointer;
 }
 .dot:before {
@@ -661,12 +671,11 @@ nav {
 
 .progressControl {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
+  left: 25%;
+  width: calc(75% / 4);
   cursor: pointer;
+  height: 10rem;
+  top: -10rem;
 }
 .progressControl:before {
   content: "";
@@ -675,11 +684,28 @@ nav {
   width: 1.2rem;
   height: 1.2rem;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 0;
+  left: 0;
   border-radius: 50%;
   z-index: 1;
+}
+.progressControl .championIconAndRoleWrap {
+  display: inline-block;
+  background: green;
+  position: relative;
+}
+.progressControl .championIconAndRoleWrap svg {
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+}
+.progressControl .championIconAndRoleWrap h1 {
+  font-size: 0.8rem;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 5rem;
 }
 
 /*# sourceMappingURL=main.css.map */
