@@ -58,7 +58,7 @@ $progressBarWidth: 75%;
 .championSpotlightContainer {
     position: relative;
     width: 50%;
-    height: 74rem;
+    height: 78rem;
 
     overflow: hidden;
     img {
@@ -208,4 +208,15 @@ $progressBarWidth: 75%;
     height: 10rem;
     transform: rotate(45deg) translate3d(0px, 0px, 0px);
     z-index: 0;
+}
+
+.championSpotlightName {
+    position: relative;
+    top: 0;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    margin-top: -1rem;
+    font-size: 1.5rem;
 }

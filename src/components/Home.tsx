@@ -4,6 +4,7 @@ import HomeBanner from "./HomeBanner";
 
 const championSpotlight = [
     {
+        name: "Thresh",
         role: "Support",
         image: "",
         svg: (
@@ -15,6 +16,7 @@ const championSpotlight = [
             "https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/en-us/production/en-us/static/support-d63ae08baf517425864ddc020a5871d5.png",
     },
     {
+        name: "Akali",
         role: "Assasins",
         image: "",
         svg: (
@@ -28,6 +30,7 @@ const championSpotlight = [
     },
     {
         role: "Fighters",
+        name: "Yasuo",
         image: "",
         svg: (
             <svg className="iconRole" viewBox="0 0 100 100">
@@ -40,6 +43,7 @@ const championSpotlight = [
     },
     {
         role: "Marksmen",
+        name: "Jinx",
         image: "",
         svg: (
             <svg className="iconRole" viewBox="0 0 100 100">
@@ -323,11 +327,16 @@ const Home: React.FC<{}> = () => {
                             {championSpotlight.map((champion, index) => {
                                 return (
                                     progress.percentage === index * 25 && (
-                                        <img
-                                            key={index}
-                                            src={champion.spotlightImage}
-                                            alt=""
-                                        ></img>
+                                        <React.Fragment>
+                                            <img
+                                                key={index}
+                                                src={champion.spotlightImage}
+                                                alt=""
+                                            ></img>
+                                            <h1 className="championSpotlightName">
+                                                {champion.name}
+                                            </h1>
+                                        </React.Fragment>
                                     )
                                 );
                             })}
