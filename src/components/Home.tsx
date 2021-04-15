@@ -45,7 +45,7 @@ const championSpotlight = [
 ];
 
 const Home: React.FC<{}> = () => {
-    const roleSelect = () => {
+    const roleSelectIcon = () => {
         return (
             <svg className="iconSelectedRole" viewBox="0 0 100 100">
                 <path d="M59.84 7.78L50 17.63l-4.43-4.43-5.41-5.42a46.63 46.63 0 1019.68 0zm-12 12L50 22l2.2-2.19 4.67-4.67a38.86 38.86 0 11-13.74 0zM50 96.89a43.52 43.52 0 01-10.82-85.68l2.59 2.59a40.42 40.42 0 1016.46 0l2.59-2.59A43.52 43.52 0 0150 96.89z"></path>
@@ -76,22 +76,20 @@ const Home: React.FC<{}> = () => {
         },
     });
 
-    const hoverIcon = useSpring({
+    const iconGrow = useTransition(isRoleHover.percentage, {
         from: {
-            transform: "translate3d(0%,0%,0px)",
+            transform: "translate3d(0px,0px,0px) scale(1) ",
         },
-        to: {
-            transform: `translate3d(${progress.percentage}%,0%,0px)`,
 
-            //transform: `translate3d(0px,0%,0px)`,
+        enter: {
+            transform: "translate3d(0px,-10px,0px) scale(1.1)",
         },
 
         config: {
-            duration: 1000,
+            duration: 250,
         },
     });
-
-    const iconGrow = useTransition(isRoleHover.percentage, {
+    const iconGrowClick = useTransition(progress.percentage, {
         from: {
             transform: "translate3d(0px,0px,0px) scale(1) ",
         },
@@ -112,6 +110,24 @@ const Home: React.FC<{}> = () => {
 
         enter: {
             color: "black",
+        },
+
+        config: {
+            duration: 250,
+        },
+    });
+
+    const showSelectedIcon = useTransition(isRoleHover.percentage, {
+        from: {
+            opacity: 0,
+        },
+
+        enter: {
+            opacity: 1,
+        },
+
+        leave: {
+            opacity: 0,
         },
 
         config: {
@@ -152,35 +168,82 @@ const Home: React.FC<{}> = () => {
                                         }}
                                         className="progressControl"
                                         onMouseEnter={() => {
-                                            setIsRoleHover({
-                                                percentage: index * 25,
-                                            });
+                                            if (
+                                                progress.percentage !==
+                                                index * 25
+                                            )
+                                                setIsRoleHover({
+                                                    percentage: index * 25,
+                                                });
                                         }}
                                         onMouseLeave={() => {
-                                            setIsRoleHover({
-                                                percentage: -100,
-                                            });
+                                            if (
+                                                progress.percentage !==
+                                                index * 25
+                                            )
+                                                setIsRoleHover({
+                                                    percentage: -100,
+                                                });
                                         }}
                                     >
                                         <div className="championIconAndRoleWrap">
-                                            {isRoleHover.percentage ===
-                                                index * 25 && roleSelect()}
+                                            {showSelectedIcon(
+                                                (animation, item) => {
+                                                    return (
+                                                        progress.percentage ===
+                                                            index * 25 && (
+                                                            <animated.svg
+                                                                className="iconSelectedRole"
+                                                                viewBox="0 0 100 100"
+                                                                style={
+                                                                    animation
+                                                                }
+                                                            >
+                                                                <path d="M59.84 7.78L50 17.63l-4.43-4.43-5.41-5.42a46.63 46.63 0 1019.68 0zm-12 12L50 22l2.2-2.19 4.67-4.67a38.86 38.86 0 11-13.74 0zM50 96.89a43.52 43.52 0 01-10.82-85.68l2.59 2.59a40.42 40.42 0 1016.46 0l2.59-2.59A43.52 43.52 0 0150 96.89z"></path>
+                                                                <path d="M55.44 5.44L50 10.88l-5.44-5.44L50 0z"></path>
+                                                            </animated.svg>
+                                                        )
+                                                    );
+                                                }
+                                            )}
 
                                             {/* {roleSelect()} */}
                                             {iconGrow((animation, item) => {
                                                 return (
-                                                    <animated.div
-                                                        className="iconRoleWrap"
-                                                        style={
-                                                            item === index * 25
-                                                                ? animation
-                                                                : {}
-                                                        }
-                                                    >
-                                                        {champion.svg}
-                                                    </animated.div>
+                                                    index * 25 !=
+                                                        progress.percentage && (
+                                                        <animated.div
+                                                            className="iconRoleWrap"
+                                                            style={
+                                                                item ===
+                                                                index * 25
+                                                                    ? animation
+                                                                    : {}
+                                                            }
+                                                        >
+                                                            {champion.svg}
+                                                        </animated.div>
+                                                    )
                                                 );
                                             })}
+
+                                            {iconGrowClick(
+                                                (animation, item) => {
+                                                    return (
+                                                        item === index * 25 && (
+                                                            <animated.div
+                                                                className="iconRoleWrap"
+                                                                style={
+                                                                    animation
+                                                                }
+                                                            >
+                                                                {champion.svg}
+                                                            </animated.div>
+                                                        )
+                                                    );
+                                                }
+                                            )}
+
                                             {changeColor((animation, item) => {
                                                 return (
                                                     <animated.h1

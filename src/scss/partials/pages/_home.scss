@@ -1,4 +1,5 @@
 $progressBarIntroWidth: 25%;
+$progressBarWidth: 75%;
 .chooseChampionContainer {
     padding-top: 10rem;
     padding-bottom: 10rem;
@@ -152,6 +153,7 @@ $progressBarIntroWidth: 25%;
     width: 2.5rem;
     height: 2.5rem;
 }
+
 .iconSelectedRole {
     position: absolute;
     top: -3.5rem;
