@@ -638,6 +638,8 @@ nav {
 .championSpotlightContainer {
   position: relative;
   width: 50%;
+  height: 74rem;
+  overflow: hidden;
 }
 .championSpotlightContainer img {
   width: 100%;
@@ -734,6 +736,7 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 1;
 }
 
 .circle-bg {
@@ -746,7 +749,7 @@ nav {
   fill: none;
   stroke-width: 0.2;
   stroke-linecap: round;
-  animation: progress 10s infinite ease forwards;
+  animation: progress 2s ease forwards;
 }
 
 @keyframes progress {
@@ -756,6 +759,16 @@ nav {
 }
 .circular-chart.blue .circle {
   stroke: #c39031;
+}
+
+.whiteBox {
+  width: 100%;
+  position: absolute;
+  bottom: 50%;
+  background-color: white;
+  height: 10rem;
+  transform: rotate(45deg) translate3d(0px, 0px, 0px);
+  z-index: 0;
 }
 
 /*# sourceMappingURL=main.css.map */

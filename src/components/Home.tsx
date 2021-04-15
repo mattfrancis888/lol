@@ -11,6 +11,8 @@ const championSpotlight = [
                 <path d="M90.4 2.11c0 27.3-25.4 36.63-25.4 36.63L60.94 61a8.39 8.39 0 00-.48 2.39 6.95 6.95 0 0013.89 0 6.7 6.7 0 00-5.75-6.7c6.71-11.5 16.29-6 16.29-6 1.43-1.44 2.63-2.88 3.83-4.07l-7.19-2.88h9.34a38.5 38.5 0 005.75-11.25L87 28.69h10.3a33 33 0 00-6.9-26.58M35.32 38.74S9.93 29.41 9.93 2.11c0 0-9.82 10.77-7.42 26.1h10.3L3.23 32a41.09 41.09 0 004.07 8.9h11l-8.61 3.59a39.83 39.83 0 005.27 6s9.58-5.51 16.29 6a6.7 6.7 0 00-5.75 6.7 6.95 6.95 0 1013.41-2.39zM45.14 22.7l2.63-6.7h4.79l2.63 6.94-5 13.89zm-1-16l-7 16 10.15 25.38v23.71l-5 16 5 10H53l5-10-5-16V48.08L63.1 22.7l-7-16z"></path>
             </svg>
         ),
+        spotlightImage:
+            "https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/en-us/production/en-us/static/support-d63ae08baf517425864ddc020a5871d5.png",
     },
     {
         role: "Assasins",
@@ -21,6 +23,8 @@ const championSpotlight = [
                 <path d="M73.11 38.74c-3.35-4.31-6-10-6-18.91 0-4.07-3.59-8.15-7.66-12-4.79-4.31-5.75-5.74-9.58-5.74s-4.79 1.43-9.34 5.74c-4.07 3.83-7.66 7.91-7.66 12 0 8.86-2.88 14.6-6 18.68L12.76 52.87 2.23 45.69v12.93S2.47 84 39.58 97.89c0 0-14.13-7.18-16.28-31.13-.24-1.67-.24-9.1-.24-10.29A119.77 119.77 0 0036.71 74c-.72-1.2-1.44-2.64-2.16-3.83-5-10.54-4.07-18.2-1.67-23.47a22.77 22.77 0 017.42-8.86l9.58 9.58 9.58-9.58a22.77 22.77 0 017.42 8.86c2.4 5.27 3.59 12.93-1.43 23.23-.72 1.38-1.45 2.58-2.16 4.07a119.77 119.77 0 0013.65-17.53c0 1.19 0 8.62-.24 10.29-2.39 23.95-16.28 31.13-16.28 31.13C97.53 84 97.77 58.62 97.77 58.62V45.69l-10.53 7.18z"></path>
             </svg>
         ),
+        spotlightImage:
+            "https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/en-us/production/en-us/static/assassin-d64d3ffdda15e1eed637aefe6a2c7fee.png",
     },
     {
         role: "Fighters",
@@ -31,6 +35,8 @@ const championSpotlight = [
                 <path d="M60.18 54c-1.2-5.27-1.44-4.55-5.75-4.79L40.78 48v-3.87h5.51A4.09 4.09 0 0050.36 41l1-3.35L32.4 35l-5 12.22 11.74 17-5.54 18.47L49.88 98l16.53-15.07s-6.23-28.5-6.23-29M49.88 2.23l-4.79 10.29 4.79 3.83 4.79-3.83zM62.1 9.41l1.43 6h6l2.87-11zM30.25 15.4h6l.24-.72 1.2-5.27-10.3-5z"></path>
             </svg>
         ),
+        spotlightImage:
+            "https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/en-us/production/en-us/static/fighter-7a08920b696ecdb673edeeae1d3c616e.png",
     },
     {
         role: "Marksmen",
@@ -41,6 +47,8 @@ const championSpotlight = [
                 <path d="M50 2.11l-7.66 21.31h.24L50 33.24l7.42-9.82h.24z"></path>
             </svg>
         ),
+        spotlightImage:
+            "https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/en-us/production/en-us/static/marksman-b339ed8fd7e04ff2c3fca022c5d299fb.png",
     },
 ];
 
@@ -125,6 +133,27 @@ const Home: React.FC<{}> = () => {
 
         config: {
             duration: 250,
+        },
+    });
+
+    const circle = useTransition(progress.percentage, {
+        //This is used with progress in home.scss -
+        // re renders the SVG path whenever progress.percentage
+        //changes
+    });
+    const whiteLoadingBox = useTransition(progress.percentage, {
+        from: {
+            transform: "rotate(45deg) translate3d(0px, 330px, 0px)",
+        },
+
+        enter: {
+            transform: "rotate(45deg) translate3d(0px, -330px, 0px)",
+        },
+
+        config: {
+            mass: 1,
+            tension: 150,
+            friction: 50,
         },
     });
 
@@ -270,20 +299,38 @@ const Home: React.FC<{}> = () => {
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831"
                                     />
-                                    <path
-                                        className="circle"
-                                        stroke-dasharray="100, 100"
-                                        d="M18 2.0845
+                                    {circle((animation, item) => {
+                                        return (
+                                            <path
+                                                className="circle"
+                                                stroke-dasharray="100, 100"
+                                                d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831"
-                                    />
+                                            />
+                                        );
+                                    })}
                                 </svg>
                             </div>
-
-                            <img
-                                src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/en-us/production/en-us/static/support-d63ae08baf517425864ddc020a5871d5.png"
-                                alt=""
-                            ></img>
+                            {whiteLoadingBox((animation, item) => {
+                                return (
+                                    <animated.div
+                                        className="whiteBox"
+                                        style={animation}
+                                    ></animated.div>
+                                );
+                            })}
+                            {championSpotlight.map((champion, index) => {
+                                return (
+                                    progress.percentage === index * 25 && (
+                                        <img
+                                            key={index}
+                                            src={champion.spotlightImage}
+                                            alt=""
+                                        ></img>
+                                    )
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
