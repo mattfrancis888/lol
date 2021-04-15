@@ -45,14 +45,6 @@ const championSpotlight = [
 ];
 
 const Home: React.FC<{}> = () => {
-    const roleSelectIcon = () => {
-        return (
-            <svg className="iconSelectedRole" viewBox="0 0 100 100">
-                <path d="M59.84 7.78L50 17.63l-4.43-4.43-5.41-5.42a46.63 46.63 0 1019.68 0zm-12 12L50 22l2.2-2.19 4.67-4.67a38.86 38.86 0 11-13.74 0zM50 96.89a43.52 43.52 0 01-10.82-85.68l2.59 2.59a40.42 40.42 0 1016.46 0l2.59-2.59A43.52 43.52 0 0150 96.89z"></path>
-                <path d="M55.44 5.44L50 10.88l-5.44-5.44L50 0z"></path>
-            </svg>
-        );
-    };
     const [isRoleHover, setIsRoleHover] = useState({
         percentage: 0,
     });
@@ -89,19 +81,6 @@ const Home: React.FC<{}> = () => {
             duration: 250,
         },
     });
-    const iconGrowClick = useTransition(progress.percentage, {
-        from: {
-            transform: "translate3d(0px,0px,0px) scale(1) ",
-        },
-
-        enter: {
-            transform: "translate3d(0px,-10px,0px) scale(1.1)",
-        },
-
-        config: {
-            duration: 250,
-        },
-    });
 
     const changeColor = useTransition(isRoleHover.percentage, {
         from: {
@@ -117,7 +96,21 @@ const Home: React.FC<{}> = () => {
         },
     });
 
-    const showSelectedIcon = useTransition(isRoleHover.percentage, {
+    const iconGrowClick = useTransition(progress.percentage, {
+        from: {
+            transform: "translate3d(0px,-10px,0px) scale(1.1) ",
+        },
+
+        enter: {
+            transform: "translate3d(0px,-10px,0px) scale(1.1)",
+        },
+
+        config: {
+            duration: 250,
+        },
+    });
+
+    const showSelectedIcon = useTransition(progress.percentage, {
         from: {
             opacity: 0,
         },
@@ -190,8 +183,7 @@ const Home: React.FC<{}> = () => {
                                             {showSelectedIcon(
                                                 (animation, item) => {
                                                     return (
-                                                        progress.percentage ===
-                                                            index * 25 && (
+                                                        item === index * 25 && (
                                                             <animated.svg
                                                                 className="iconSelectedRole"
                                                                 viewBox="0 0 100 100"
@@ -207,10 +199,10 @@ const Home: React.FC<{}> = () => {
                                                 }
                                             )}
 
-                                            {/* {roleSelect()} */}
+                                            {/* Icon dissapears when user clicks on icon */}
                                             {iconGrow((animation, item) => {
                                                 return (
-                                                    index * 25 !=
+                                                    index * 25 !==
                                                         progress.percentage && (
                                                         <animated.div
                                                             className="iconRoleWrap"
@@ -226,7 +218,7 @@ const Home: React.FC<{}> = () => {
                                                     )
                                                 );
                                             })}
-
+                                            {/*Icon appears when user clicks on icon -replacing the dissapeared icon above */}
                                             {iconGrowClick(
                                                 (animation, item) => {
                                                     return (
@@ -265,6 +257,29 @@ const Home: React.FC<{}> = () => {
                         </div>
 
                         <div className="championSpotlightContainer">
+                            {/*https://medium.com/@pppped/how-to-code-a-responsive-circular-percentage-chart-with-svg-and-css-3632f8cd7705 */}
+
+                            <div className="spotlightCircleSvg">
+                                <svg
+                                    viewBox="0 0 36 36"
+                                    className="circular-chart blue"
+                                >
+                                    <path
+                                        className="circle-bg"
+                                        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+                                    />
+                                    <path
+                                        className="circle"
+                                        stroke-dasharray="100, 100"
+                                        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+                                    />
+                                </svg>
+                            </div>
+
                             <img
                                 src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/en-us/production/en-us/static/support-d63ae08baf517425864ddc020a5871d5.png"
                                 alt=""

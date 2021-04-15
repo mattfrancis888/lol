@@ -56,6 +56,7 @@ $progressBarWidth: 75%;
 }
 
 .championSpotlightContainer {
+    position: relative;
     width: 50%;
     img {
         width: 100%;
@@ -162,4 +163,34 @@ $progressBarWidth: 75%;
     height: 7rem;
     transform: translateX(-50%);
     fill: rgb(195, 144, 49);
+}
+
+.spotlightCircleSvg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 0.2;
+}
+
+.circle {
+    fill: none;
+    stroke-width: 0.2;
+    stroke-linecap: round;
+    animation: progress 10s infinite ease forwards;
+}
+
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}
+
+.circular-chart.blue .circle {
+    stroke: rgb(195, 144, 49);
 }
