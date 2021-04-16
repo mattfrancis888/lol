@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, useTransition, animated } from "react-spring";
 import { LG_SCREEN_SIZE } from "../constants";
-import HomeBanner from "./HomeBanner";
 
 import useWindowDimensions from "../windowDimensions";
 const championSpotlight = [
@@ -64,8 +63,29 @@ const Home: React.FC<{}> = () => {
     });
 
     const [progress, setProgress] = useState({
-        percentage: 25,
+        percentage: 0,
+        stopAutoplay: false,
     });
+    useEffect(() => {
+        let fillTimeOut: any;
+        if (!progress.stopAutoplay) {
+            fillTimeOut = setTimeout(() => {
+                if (progress.percentage < 75)
+                    setProgress({
+                        percentage: progress.percentage + 25,
+                        stopAutoplay: false,
+                    });
+                else
+                    setProgress({
+                        percentage: 0,
+                        stopAutoplay: false,
+                    });
+            }, 1000);
+        }
+        return () => {
+            clearTimeout(fillTimeOut);
+        };
+    }, [progress]);
 
     const fill = useSpring({
         from: {
@@ -178,7 +198,7 @@ const Home: React.FC<{}> = () => {
                 </p>
                 <div className="championRoleAndSpotlightWrap">
                     <div className="roleContainer">
-                        <div className="progressBarIntro"></div>
+                        {/* <div className="progressBarIntro"></div> */}
                         <div className="progressBar"></div>
                         <animated.div
                             className="dot"
@@ -192,6 +212,7 @@ const Home: React.FC<{}> = () => {
                                     onClick={() => {
                                         setProgress({
                                             percentage: index * 25,
+                                            stopAutoplay: true,
                                         });
                                     }}
                                     onMouseEnter={() => {
@@ -326,11 +347,11 @@ const Home: React.FC<{}> = () => {
                                         src={champion.spotlightImage}
                                         alt=""
                                     ></img>
-                                    {progress.percentage === index * 25 && (
+                                    {/* {progress.percentage === index * 25 && (
                                         <h1 className="championSpotlightName">
                                             {champion.name}
                                         </h1>
-                                    )}
+                                    )} */}
                                 </React.Fragment>
                             );
                         })}

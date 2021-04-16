@@ -51,9 +51,10 @@ $progressBarWidth: 75%;
 
 .championRoleAndSpotlightWrap {
     width: 100%;
-    margin-top: 30rem;
+    margin-top: 15rem;
     @media screen and (min-width: $lg_breakpoint) {
-        margin-top: 0;
+        margin-top: 5rem;
+
         display: flex;
         align-items: center;
     }
@@ -62,7 +63,7 @@ $progressBarWidth: 75%;
     position: relative;
     display: flex;
     width: 100%;
-    // height: 1rem;
+    height: 5rem;
     @media screen and (min-width: $lg_breakpoint) {
         width: 50%;
     }
@@ -79,25 +80,29 @@ $progressBarWidth: 75%;
     .progressBar {
         position: absolute;
         width: 100%;
-        @media screen and (min-width: $lg_breakpoint) {
-            left: $progressBarIntroWidth;
-            width: 82%;
-        }
-        @media screen and (min-width: 1050px) {
-            width: 83%;
-        }
+        // @media screen and (min-width: $lg_breakpoint) {
+        //     left: $progressBarIntroWidth;
+        //     width: 82%;
+        // }
+        // @media screen and (min-width: 1050px) {
+        //     width: 83%;
+        // }
 
-        @media screen and (min-width: 1100px) {
-            left: $progressBarIntroWidth;
-            width: 85.5%;
-        }
-        @media screen and (min-width: 1150px) {
-            width: 86.5%;
-        }
-        @media screen and (min-width: $xl_breakpoint) {
-            left: $progressBarIntroWidth;
-            width: 81.5%;
-        }
+        // @media screen and (min-width: 1100px) {
+        //     left: $progressBarIntroWidth;
+        //     width: 85.5%;
+        // }
+        // @media screen and (min-width: 1150px) {
+        //     width: 86.5%;
+        // }
+        // @media screen and (min-width: $xl_breakpoint) {
+        //     left: $progressBarIntroWidth;
+        //     width: 81.5%;
+        // }
+        // @media screen and (min-width: 1400px) {
+        //     left: $progressBarIntroWidth;
+        //     width: 42.5vw;
+        // }
         height: 0.1rem;
         background-color: grey;
     }
@@ -107,6 +112,7 @@ $progressBarWidth: 75%;
     position: relative;
     width: 100%;
     height: 32rem;
+    overflow: hidden;
     @media screen and (min-width: $sm_breakpoint) {
         height: 42rem;
     }
@@ -137,7 +143,9 @@ $progressBarWidth: 75%;
 
         height: 100%;
 
-        object-fit: cover;
+        object-fit: contain;
+
+        border-radius: 50%;
     }
 }
 

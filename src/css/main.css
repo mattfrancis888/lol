@@ -345,6 +345,7 @@ body {
   color: black;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow-x: hidden;
 }
 
 a {
@@ -640,11 +641,11 @@ nav {
 
 .championRoleAndSpotlightWrap {
   width: 100%;
-  margin-top: 30rem;
+  margin-top: 15rem;
 }
 @media screen and (min-width: 992px) {
   .championRoleAndSpotlightWrap {
-    margin-top: 0;
+    margin-top: 5rem;
     display: flex;
     align-items: center;
   }
@@ -654,6 +655,7 @@ nav {
   position: relative;
   display: flex;
   width: 100%;
+  height: 5rem;
 }
 @media screen and (min-width: 992px) {
   .roleContainer {
@@ -678,39 +680,12 @@ nav {
   height: 0.1rem;
   background-color: grey;
 }
-@media screen and (min-width: 992px) {
-  .roleContainer .progressBar {
-    left: 25%;
-    width: 82%;
-  }
-}
-@media screen and (min-width: 1050px) {
-  .roleContainer .progressBar {
-    width: 83%;
-  }
-}
-@media screen and (min-width: 1100px) {
-  .roleContainer .progressBar {
-    left: 25%;
-    width: 85.5%;
-  }
-}
-@media screen and (min-width: 1150px) {
-  .roleContainer .progressBar {
-    width: 86.5%;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .roleContainer .progressBar {
-    left: 25%;
-    width: 81.5%;
-  }
-}
 
 .championSpotlightContainer {
   position: relative;
   width: 100%;
   height: 32rem;
+  overflow: hidden;
 }
 @media screen and (min-width: 520px) {
   .championSpotlightContainer {
@@ -741,7 +716,8 @@ nav {
   transform: translateX(-50%);
   width: auto;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  border-radius: 50%;
 }
 @media screen and (min-width: 992px) {
   .championSpotlightContainer img {
