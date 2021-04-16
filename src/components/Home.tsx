@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, useTransition, animated } from "react-spring";
+import { LG_SCREEN_SIZE } from "../constants";
 import HomeBanner from "./HomeBanner";
-
+import ChooseYourChampion from "./ChooseYourChampion";
+import useWindowDimensions from "../windowDimensions";
 const championSpotlight = [
     {
         name: "Thresh",
@@ -145,18 +147,19 @@ const Home: React.FC<{}> = () => {
         // re renders the SVG path whenever progress.percentage
         //changes
     });
+    const { width } = useWindowDimensions();
     const whiteLoadingBox = useTransition(progress.percentage, {
         from: {
-            transform: "rotate(45deg) translate3d(0px, 330px, 0px)",
+            transform: "rotate(45deg) translate3d(0px, 33rem, 0px)",
         },
 
         enter: {
-            transform: "rotate(45deg) translate3d(0px, -330px, 0px)",
+            transform: "rotate(45deg) translate3d(0px, -35rem, 0px)",
         },
 
         config: {
             mass: 1,
-            tension: 150,
+            tension: width > LG_SCREEN_SIZE ? 150 : 80,
             friction: 50,
         },
     });
@@ -164,195 +167,7 @@ const Home: React.FC<{}> = () => {
     return (
         <div className="homeContainer">
             <HomeBanner />
-            <div className="chooseChampionContainer">
-                <div className="chooseChampionTextWrap">
-                    <h1 className="chooseChampionText">
-                        Choose Your
-                        <span className="championBold">Champion</span>
-                    </h1>
-                    <p>
-                        Whether you like to dive straight into the fray, support
-                        your teammates, or something in between, there’s a spot
-                        for you on the Rift.
-                    </p>
-                    <div className="championRoleAndSpotlightWrap">
-                        <div className="roleContainer">
-                            <div className="progressBarIntro"></div>
-                            <div className="progressBar"></div>
-                            <animated.div
-                                className="dot"
-                                style={fill}
-                            ></animated.div>
-                            {championSpotlight.map((champion, index) => {
-                                return (
-                                    <div
-                                        key={index}
-                                        onClick={() => {
-                                            setProgress({
-                                                percentage: index * 25,
-                                            });
-                                        }}
-                                        className="progressControl"
-                                        onMouseEnter={() => {
-                                            if (
-                                                progress.percentage !==
-                                                index * 25
-                                            )
-                                                setIsRoleHover({
-                                                    percentage: index * 25,
-                                                });
-                                        }}
-                                        onMouseLeave={() => {
-                                            if (
-                                                progress.percentage !==
-                                                index * 25
-                                            )
-                                                setIsRoleHover({
-                                                    percentage: -100,
-                                                });
-                                        }}
-                                    >
-                                        <div className="championIconAndRoleWrap">
-                                            {showSelectedIcon(
-                                                (animation, item) => {
-                                                    return (
-                                                        item === index * 25 && (
-                                                            <animated.svg
-                                                                className="iconSelectedRole"
-                                                                viewBox="0 0 100 100"
-                                                                style={
-                                                                    animation
-                                                                }
-                                                            >
-                                                                <path d="M59.84 7.78L50 17.63l-4.43-4.43-5.41-5.42a46.63 46.63 0 1019.68 0zm-12 12L50 22l2.2-2.19 4.67-4.67a38.86 38.86 0 11-13.74 0zM50 96.89a43.52 43.52 0 01-10.82-85.68l2.59 2.59a40.42 40.42 0 1016.46 0l2.59-2.59A43.52 43.52 0 0150 96.89z"></path>
-                                                                <path d="M55.44 5.44L50 10.88l-5.44-5.44L50 0z"></path>
-                                                            </animated.svg>
-                                                        )
-                                                    );
-                                                }
-                                            )}
-
-                                            {/* Icon dissapears when user clicks on icon */}
-                                            {iconGrow((animation, item) => {
-                                                return (
-                                                    index * 25 !==
-                                                        progress.percentage && (
-                                                        <animated.div
-                                                            className="iconRoleWrap"
-                                                            style={
-                                                                item ===
-                                                                index * 25
-                                                                    ? animation
-                                                                    : {}
-                                                            }
-                                                        >
-                                                            {champion.svg}
-                                                        </animated.div>
-                                                    )
-                                                );
-                                            })}
-                                            {/*Icon appears when user clicks on icon -replacing the dissapeared icon above */}
-                                            {iconGrowClick(
-                                                (animation, item) => {
-                                                    return (
-                                                        item === index * 25 && (
-                                                            <animated.div
-                                                                className="iconRoleWrap"
-                                                                style={
-                                                                    animation
-                                                                }
-                                                            >
-                                                                {champion.svg}
-                                                            </animated.div>
-                                                        )
-                                                    );
-                                                }
-                                            )}
-
-                                            {changeColor((animation, item) => {
-                                                return (
-                                                    <animated.h1
-                                                        style={
-                                                            item === index * 25
-                                                                ? animation
-                                                                : {}
-                                                        }
-                                                        className="roleText"
-                                                    >
-                                                        {champion.role}
-                                                    </animated.h1>
-                                                );
-                                            })}
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-
-                        <div className="championSpotlightContainer">
-                            {/*https://medium.com/@pppped/how-to-code-a-responsive-circular-percentage-chart-with-svg-and-css-3632f8cd7705 */}
-
-                            <div className="spotlightCircleSvg">
-                                <svg
-                                    viewBox="0 0 36 36"
-                                    className="circular-chart blue"
-                                >
-                                    <path
-                                        className="circle-bg"
-                                        d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                                    />
-                                    {circle((animation, item) => {
-                                        return (
-                                            <path
-                                                className="circle"
-                                                stroke-dasharray="100, 100"
-                                                d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"
-                                            />
-                                        );
-                                    })}
-                                </svg>
-                            </div>
-                            {whiteLoadingBox((animation, item) => {
-                                return (
-                                    <animated.div
-                                        className="whiteBox"
-                                        style={animation}
-                                    ></animated.div>
-                                );
-                            })}
-                            {championSpotlight.map((champion, index) => {
-                                //The <img> below uses classnames to decide wheter to show or hide the image
-                                // instead of react spring because react-spring would re-render the image
-                                //and cause a new network call.
-                                return (
-                                    <React.Fragment>
-                                        <img
-                                            className={
-                                                progress.percentage ===
-                                                index * 25
-                                                    ? "showImage"
-                                                    : "hideImage"
-                                            }
-                                            key={index}
-                                            src={champion.spotlightImage}
-                                            alt=""
-                                        ></img>
-                                        {progress.percentage === index * 25 && (
-                                            <h1 className="championSpotlightName">
-                                                {champion.name}
-                                            </h1>
-                                        )}
-                                    </React.Fragment>
-                                );
-                            })}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ChooseYourChampion />
         </div>
     );
 };

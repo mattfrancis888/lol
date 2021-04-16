@@ -592,16 +592,16 @@ nav {
   flex-direction: column;
   align-items: center;
 }
-.chooseChampionTextWrap h1,
-.chooseChampionTextWrap p {
+.chooseChampionTextWrap .chooseChampionText,
+.chooseChampionTextWrap .chooseChampionDescText {
   margin: 0;
   font-size: 1.5rem;
   padding: 0 4rem;
   text-align: center;
 }
 @media screen and (min-width: 768px) {
-  .chooseChampionTextWrap h1,
-.chooseChampionTextWrap p {
+  .chooseChampionTextWrap .chooseChampionText,
+.chooseChampionTextWrap .chooseChampionDescText {
     padding: 0 10rem;
   }
 }
@@ -662,7 +662,7 @@ nav {
 }
 .roleContainer .progressBarIntro {
   position: absolute;
-  height: 0.2rem;
+  height: 0.1rem;
   background-color: black;
   width: 0%;
   left: 0;
@@ -675,13 +675,35 @@ nav {
 .roleContainer .progressBar {
   position: absolute;
   width: 100%;
-  height: 0.2rem;
+  height: 0.1rem;
   background-color: grey;
 }
 @media screen and (min-width: 992px) {
   .roleContainer .progressBar {
     left: 25%;
-    width: 75%;
+    width: 82%;
+  }
+}
+@media screen and (min-width: 1050px) {
+  .roleContainer .progressBar {
+    width: 83%;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .roleContainer .progressBar {
+    left: 25%;
+    width: 85.5%;
+  }
+}
+@media screen and (min-width: 1150px) {
+  .roleContainer .progressBar {
+    width: 86.5%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .roleContainer .progressBar {
+    left: 25%;
+    width: 81.5%;
   }
 }
 
@@ -689,7 +711,6 @@ nav {
   position: relative;
   width: 100%;
   height: 32rem;
-  overflow: hidden;
 }
 @media screen and (min-width: 520px) {
   .championSpotlightContainer {
@@ -725,8 +746,8 @@ nav {
 @media screen and (min-width: 992px) {
   .championSpotlightContainer img {
     width: 100%;
-    transform: translateX(0%);
     left: 0;
+    transform: translateX(0%);
   }
 }
 
@@ -749,7 +770,7 @@ nav {
   width: 1.2rem;
   height: 1.2rem;
   position: absolute;
-  top: 0;
+  top: -0.5rem;
   left: 0;
   border-radius: 50%;
   z-index: 1;
@@ -770,7 +791,7 @@ nav {
   width: 1.2rem;
   height: 1.2rem;
   position: absolute;
-  bottom: 0;
+  bottom: 0.5rem;
   left: 0;
   border-radius: 50%;
   z-index: 1;
@@ -778,21 +799,21 @@ nav {
 .progressControl .championIconAndRoleWrap {
   display: inline-block;
   position: relative;
-  left: -6rem;
+  left: -1.5rem;
 }
 @media screen and (min-width: 520px) {
   .progressControl .championIconAndRoleWrap {
-    left: -6rem;
+    left: -2.25rem;
   }
 }
 @media screen and (min-width: 768px) {
   .progressControl .championIconAndRoleWrap {
-    left: -12rem;
+    left: -2.25rem;
   }
 }
 @media screen and (min-width: 992px) {
   .progressControl .championIconAndRoleWrap {
-    left: -12rem;
+    left: -2rem;
   }
 }
 .progressControl .championIconAndRoleWrap .iconRole {
@@ -840,16 +861,20 @@ nav {
   height: 100%;
   z-index: 1;
 }
+.spotlightCircleSvg svg {
+  width: 100%;
+  height: 100%;
+}
 
 .circle-bg {
   fill: none;
   stroke: #eee;
-  stroke-width: 0.2;
+  stroke-width: 0.4;
 }
 
 .circle {
   fill: none;
-  stroke-width: 0.2;
+  stroke-width: 0.4;
   stroke-linecap: round;
   animation: progress 2s ease forwards;
 }
@@ -868,21 +893,25 @@ nav {
   position: absolute;
   bottom: 50%;
   background-color: white;
-  height: 10rem;
+  height: 6rem;
   transform: rotate(45deg) translate3d(0px, 0px, 0px);
-  z-index: 0;
+  z-index: 1;
+}
+@media screen and (min-width: 992px) {
+  .whiteBox {
+    height: 10rem;
+  }
 }
 
 .championSpotlightName {
   position: absolute;
-  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
   font-weight: bold;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
-  margin-top: -1rem;
+  bottom: -4rem;
   font-size: 1.5rem;
 }
 
@@ -892,10 +921,6 @@ nav {
 
 .hideImage {
   display: none;
-}
-
-.inner {
-  display: inline-block;
 }
 
 /*# sourceMappingURL=main.css.map */
