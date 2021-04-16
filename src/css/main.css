@@ -578,6 +578,10 @@ nav {
   right: 0;
 }
 
+.homeContainer {
+  overflow: hidden;
+}
+
 .chooseChampionContainer {
   padding-top: 10rem;
   padding-bottom: 10rem;
@@ -591,6 +595,15 @@ nav {
 .chooseChampionTextWrap h1,
 .chooseChampionTextWrap p {
   margin: 0;
+  font-size: 1.5rem;
+  padding: 0 4rem;
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .chooseChampionTextWrap h1,
+.chooseChampionTextWrap p {
+    padding: 0 10rem;
+  }
 }
 .chooseChampionTextWrap .chooseChampionText {
   text-align: center;
@@ -601,50 +614,120 @@ nav {
   font-size: 1.6rem;
   letter-spacing: 0.1rem;
 }
+@media screen and (min-width: 992px) {
+  .chooseChampionTextWrap .chooseChampionText {
+    font-size: 1.8rem;
+  }
+}
 
 .championBold {
   display: block;
-  font-size: 10rem;
+  font-size: 5rem;
   font-weight: bold;
   font-family: "Beaufort";
 }
+@media screen and (min-width: 768px) {
+  .championBold {
+    font-size: 8rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .championBold {
+    margin-top: -2rem;
+    font-size: 10rem;
+  }
+}
 
 .championRoleAndSpotlightWrap {
-  display: flex;
   width: 100%;
-  align-items: center;
+  margin-top: 30rem;
+}
+@media screen and (min-width: 992px) {
+  .championRoleAndSpotlightWrap {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .roleContainer {
   position: relative;
   display: flex;
-  width: 50%;
+  width: 100%;
+}
+@media screen and (min-width: 992px) {
+  .roleContainer {
+    width: 50%;
+  }
 }
 .roleContainer .progressBarIntro {
   position: absolute;
-  height: 1rem;
+  height: 0.2rem;
   background-color: black;
-  width: 25%;
+  width: 0%;
   left: 0;
+}
+@media screen and (min-width: 992px) {
+  .roleContainer .progressBarIntro {
+    width: 25%;
+  }
 }
 .roleContainer .progressBar {
   position: absolute;
-  width: 75%;
-  left: 25%;
-  height: 1rem;
+  width: 100%;
+  height: 0.2rem;
   background-color: grey;
+}
+@media screen and (min-width: 992px) {
+  .roleContainer .progressBar {
+    left: 25%;
+    width: 75%;
+  }
 }
 
 .championSpotlightContainer {
   position: relative;
-  width: 50%;
-  height: 78rem;
+  width: 100%;
+  height: 32rem;
   overflow: hidden;
 }
+@media screen and (min-width: 520px) {
+  .championSpotlightContainer {
+    height: 42rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .championSpotlightContainer {
+    height: 52rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .championSpotlightContainer {
+    width: 50%;
+    height: 52rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .championSpotlightContainer {
+    width: 50%;
+    height: 78rem;
+  }
+}
 .championSpotlightContainer img {
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
   height: 100%;
   object-fit: cover;
+}
+@media screen and (min-width: 992px) {
+  .championSpotlightContainer img {
+    width: 100%;
+    transform: translateX(0%);
+    left: 0;
+  }
 }
 
 .dot {
@@ -655,7 +738,6 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: yellow;
   left: 25%;
   top: 0;
   cursor: pointer;
@@ -696,7 +778,22 @@ nav {
 .progressControl .championIconAndRoleWrap {
   display: inline-block;
   position: relative;
-  left: -17%;
+  left: -6rem;
+}
+@media screen and (min-width: 520px) {
+  .progressControl .championIconAndRoleWrap {
+    left: -6rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .progressControl .championIconAndRoleWrap {
+    left: -12rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .progressControl .championIconAndRoleWrap {
+    left: -12rem;
+  }
 }
 .progressControl .championIconAndRoleWrap .iconRole {
   width: 100%;
@@ -704,7 +801,7 @@ nav {
 }
 .progressControl .championIconAndRoleWrap .roleText {
   margin-top: 2rem;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   text-align: left;
   width: 100%;
   font-weight: 400;
@@ -712,6 +809,11 @@ nav {
   transition: all 0.2s ease;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
+}
+@media screen and (min-width: 520px) {
+  .progressControl .championIconAndRoleWrap .roleText {
+    font-size: 1.1rem;
+  }
 }
 
 .iconRoleWrap {
@@ -772,14 +874,28 @@ nav {
 }
 
 .championSpotlightName {
-  position: relative;
-  top: 0;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
   font-weight: bold;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   margin-top: -1rem;
   font-size: 1.5rem;
+}
+
+.showImage {
+  display: block;
+}
+
+.hideImage {
+  display: none;
+}
+
+.inner {
+  display: inline-block;
 }
 
 /*# sourceMappingURL=main.css.map */

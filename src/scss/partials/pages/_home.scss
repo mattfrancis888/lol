@@ -1,5 +1,8 @@
 $progressBarIntroWidth: 25%;
 $progressBarWidth: 75%;
+.homeContainer {
+    overflow: hidden;
+}
 .chooseChampionContainer {
     padding-top: 10rem;
     padding-bottom: 10rem;
@@ -11,6 +14,14 @@ $progressBarWidth: 75%;
     h1,
     p {
         margin: 0;
+        font-size: 1.5rem;
+        padding: 0 4rem;
+        text-align: center;
+        @media screen and (min-width: $md_breakpoint) {
+            padding: 0 10rem;
+        }
+        @media screen and (min-width: $lg_breakpoint) {
+        }
     }
     .chooseChampionText {
         text-align: center;
@@ -19,51 +30,100 @@ $progressBarWidth: 75%;
         text-transform: uppercase;
         font-weight: 600;
         font-size: 1.6rem;
+        @media screen and (min-width: $lg_breakpoint) {
+            font-size: 1.8rem;
+        }
         letter-spacing: 0.1rem;
     }
 }
 
 .championBold {
     display: block;
-    font-size: 10rem;
+    font-size: 5rem;
     font-weight: bold;
     font-family: "Beaufort";
+
+    @media screen and (min-width: $md_breakpoint) {
+        font-size: 8rem;
+    }
+    @media screen and (min-width: $lg_breakpoint) {
+        margin-top: -2rem;
+        font-size: 10rem;
+    }
 }
 
 .championRoleAndSpotlightWrap {
-    display: flex;
     width: 100%;
-    align-items: center;
+    margin-top: 30rem;
+    @media screen and (min-width: $lg_breakpoint) {
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+    }
 }
 .roleContainer {
     position: relative;
     display: flex;
-    width: 50%;
+    width: 100%;
+    // height: 1rem;
+    @media screen and (min-width: $lg_breakpoint) {
+        width: 50%;
+    }
     .progressBarIntro {
         position: absolute;
-        height: 1rem;
+        height: 0.2rem;
         background-color: black;
-        width: $progressBarIntroWidth;
+        @media screen and (min-width: $lg_breakpoint) {
+            width: $progressBarIntroWidth;
+        }
+        width: 0%;
         left: 0;
     }
     .progressBar {
         position: absolute;
-        width: 75%;
-        left: $progressBarIntroWidth;
-        height: 1rem;
+        width: 100%;
+        @media screen and (min-width: $lg_breakpoint) {
+            left: $progressBarIntroWidth;
+            width: 75%;
+        }
+        height: 0.2rem;
         background-color: grey;
     }
 }
 
 .championSpotlightContainer {
     position: relative;
-    width: 50%;
-    height: 78rem;
-
+    width: 100%;
+    height: 32rem;
+    @media screen and (min-width: $sm_breakpoint) {
+        height: 42rem;
+    }
+    @media screen and (min-width: $md_breakpoint) {
+        height: 52rem;
+    }
+    @media screen and (min-width: $lg_breakpoint) {
+        width: 50%;
+        height: 52rem;
+    }
+    @media screen and (min-width: $xl_breakpoint) {
+        width: 50%;
+        height: 78rem;
+    }
     overflow: hidden;
     img {
-        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+        @media screen and (min-width: $lg_breakpoint) {
+            width: 100%;
+            transform: translateX(0%);
+            left: 0;
+        }
+
         height: 100%;
+
         object-fit: cover;
     }
 }
@@ -76,7 +136,7 @@ $progressBarWidth: 75%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: yellow;
+    // background: yellow;
     left: $progressBarIntroWidth;
     top: 0;
     cursor: pointer;
@@ -125,8 +185,19 @@ $progressBarWidth: 75%;
         display: inline-block;
         // background: green;
         position: relative;
-        left: -17%;
-
+        left: -6rem;
+        @media screen and (min-width: $sm_breakpoint) {
+            left: -6rem;
+        }
+        @media screen and (min-width: $md_breakpoint) {
+            left: -12rem;
+        }
+        @media screen and (min-width: $lg_breakpoint) {
+            left: -12rem;
+        }
+        // @media screen and (min-width: $xl_breakpoint) {
+        //     left: -12rem;
+        // }
         // transform: translateX(-50%);
 
         .iconRole {
@@ -135,7 +206,10 @@ $progressBarWidth: 75%;
         }
         .roleText {
             margin-top: 2rem;
-            font-size: 1.1rem;
+            font-size: 0.8rem;
+            @media screen and (min-width: $sm_breakpoint) {
+                font-size: 1.1rem;
+            }
             text-align: left;
             width: 100%;
             font-weight: 400;
@@ -211,12 +285,25 @@ $progressBarWidth: 75%;
 }
 
 .championSpotlightName {
-    position: relative;
-    top: 0;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
     font-weight: bold;
     letter-spacing: 0.1rem;
     text-transform: uppercase;
     margin-top: -1rem;
     font-size: 1.5rem;
+}
+
+.showImage {
+    display: block;
+}
+.hideImage {
+    display: none;
+}
+
+.inner {
+    display: inline-block;
 }

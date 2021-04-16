@@ -325,19 +325,28 @@ const Home: React.FC<{}> = () => {
                                 );
                             })}
                             {championSpotlight.map((champion, index) => {
+                                //The <img> below uses classnames to decide wheter to show or hide the image
+                                // instead of react spring because react-spring would re-render the image
+                                //and cause a new network call.
                                 return (
-                                    progress.percentage === index * 25 && (
-                                        <React.Fragment>
-                                            <img
-                                                key={index}
-                                                src={champion.spotlightImage}
-                                                alt=""
-                                            ></img>
+                                    <React.Fragment>
+                                        <img
+                                            className={
+                                                progress.percentage ===
+                                                index * 25
+                                                    ? "showImage"
+                                                    : "hideImage"
+                                            }
+                                            key={index}
+                                            src={champion.spotlightImage}
+                                            alt=""
+                                        ></img>
+                                        {progress.percentage === index * 25 && (
                                             <h1 className="championSpotlightName">
                                                 {champion.name}
                                             </h1>
-                                        </React.Fragment>
-                                    )
+                                        )}
+                                    </React.Fragment>
                                 );
                             })}
                         </div>
