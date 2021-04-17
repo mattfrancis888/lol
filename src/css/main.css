@@ -899,4 +899,26 @@ nav {
   display: none;
 }
 
+.bgWrap {
+  position: relative;
+  height: 100rem;
+  width: 100%;
+  background: red;
+}
+.bgWrap .mountain {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.bgWrap .tree {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.testMe {
+  position: relative;
+}
+
 /*# sourceMappingURL=main.css.map */

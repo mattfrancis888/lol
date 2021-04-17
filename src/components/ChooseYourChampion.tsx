@@ -80,7 +80,7 @@ const Home: React.FC<{}> = () => {
                         percentage: 0,
                         stopAutoplay: false,
                     });
-            }, 1000);
+            }, 5000);
         }
         return () => {
             clearTimeout(fillTimeOut);
